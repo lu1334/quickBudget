@@ -1,6 +1,6 @@
 import { validateRequiredFields } from "../utils/validateRequiredFields";
 import { useBudgetContext } from "../context/quickBudgetContext";
-
+import { validateRiqueridIncome } from "../utils/validateRequiredIncome";
 export const useInputHandler = () => {
   const aux = useBudgetContext();
 
@@ -22,7 +22,7 @@ export const useInputHandler = () => {
     aux.setConcept(event.target.value);
   };
 
-  const handlerAdd = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlerAddExpense = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateRequiredFields(aux.concept, aux.amountExpense)) return;
     aux.setListItem((prev) => [
@@ -38,12 +38,17 @@ export const useInputHandler = () => {
   };
   const handlerAddIncome = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+   if(!validateRiqueridIncome(aux.income))alert("the field must be a number")
+   else if(aux.income.trim()===""){
+    alert("the field is required")
+    return
+   };
     aux.setListIncome((prev) => [...prev, aux.income]);
-
+    aux.setIncome("")
   };
 
   return {
-    handlerAdd,
+    handlerAddExpense,
     handlerAddIncome,
     handlerOnChangeAmountExpense,
     handlerOnChangeConcept,

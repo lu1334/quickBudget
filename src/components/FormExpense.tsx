@@ -3,10 +3,10 @@ import { useInputHandler } from "../Hooks/useInputsHandlers";
 import "./forms.css";
 export const Form = () => {
   const { amountExpense, concept } = useBudgetContext();
-  const { handlerOnChangeConcept, handlerOnChangeAmountExpense, handlerAdd } =
+  const { handlerOnChangeConcept, handlerOnChangeAmountExpense, handlerAddExpense } =
     useInputHandler();
   return (
-    <form className="qb-form-card" onSubmit={handlerAdd}>
+    <form className="qb-form-card" onSubmit={handlerAddExpense}>
       <div className="qb-form-heading">
         <h2>Registra un nuevo gasto</h2>
         <p>Anota cada salida para mantener tu presupuesto bajo control.</p>
