@@ -38,11 +38,16 @@ export const useInputHandler = () => {
   };
   const handlerAddIncome = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-   if(!validateRiqueridIncome(aux.income))alert("the field must be a number")
-   else if(aux.income.trim()===""){
+   if(!validateRiqueridIncome(aux.income)){
+    alert("the field must be a number")
+    return
+   }else if(aux.income.trim()===""){
     alert("the field is required")
     return
-   };
+   }
+   else{
+    alert("Income added successfully")
+    }
     aux.setListIncome((prev) => [...prev, aux.income]);
     aux.setIncome("")
   };

@@ -1,11 +1,8 @@
 import { useBudgetContext } from "../context/quickBudgetContext";
+import { formatAmount } from "../utils/formatAmount";
 import "./showItems.css";
 
-const formatAmount = (value: number) =>
-  value.toLocaleString("es-ES", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+
 
 export const ShowItems = () => {
   const { listItem } = useBudgetContext();
