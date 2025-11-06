@@ -29,7 +29,7 @@ export const Form = () => {
           Importe
         </label>
         <input
-          type="number"
+          type="text"
           id="amountExpense"
           className="qb-input"
           value={amountExpense}

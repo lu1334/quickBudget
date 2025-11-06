@@ -2,18 +2,18 @@ import type React from "react";
 
 
 export interface QuickBudgetContextType {
-    income: number;
-    amountExpense: number;
+    income: string;
+    amountExpense: string;
     concept: string;
     totalIncome: number;
     totalExpenses: number;
     listItem: Item[];
-    listIncome:number[];
+    listIncome:string[];
     setListItem: React.Dispatch<React.SetStateAction<Item[]>>;
 
-    setIncome: React.Dispatch<React.SetStateAction<number>>;
-    setListIncome:React.Dispatch<React.SetStateAction<number[]>>
-    setAmountExpense: React.Dispatch<React.SetStateAction<number>>;
+    setIncome: React.Dispatch<React.SetStateAction<string>>;
+    setListIncome:React.Dispatch<React.SetStateAction<string[]>>
+    setAmountExpense: React.Dispatch<React.SetStateAction<string>>;
     setConcept: React.Dispatch<React.SetStateAction<string>>;
     setTotalIncome: React.Dispatch<React.SetStateAction<number>>;
     setTotalExpenses: React.Dispatch<React.SetStateAction<number>>;
@@ -25,11 +25,11 @@ export interface QuickBudgetContextType {
 export interface Item {
     id: number;
     concept: string;
-    amountExpense: number;
+    amountExpense: string;
     state?: boolean;
 }
 
 export type ItemIncome = {
     id:number,
-    income:number
+    income:string
 }

@@ -15,7 +15,7 @@ export const FormIncome = () => {
           Importe
         </label>
         <input
-          type="number"
+          type="text"
           id="income"
           className="qb-input"
           value={income}

@@ -3,21 +3,25 @@ import { useBudgetContext } from "../context/quickBudgetContext";
 
 export const useInputHandler = () => {
   const aux = useBudgetContext();
+
   const handlerOnChangeIncome = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    aux.setIncome(Number(event.target.value));
+    aux.setIncome(event.target.value );
   };
+
   const handlerOnChangeAmountExpense = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    aux.setAmountExpense(Number(event.target.value));
+    aux.setAmountExpense(event.target.value);
   };
+
   const handlerOnChangeConcept = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     aux.setConcept(event.target.value);
   };
+
   const handlerAdd = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateRequiredFields(aux.concept, aux.amountExpense)) return;
@@ -29,10 +33,13 @@ export const useInputHandler = () => {
         amountExpense: aux.amountExpense,
       },
     ]);
+    aux.setConcept("")
+    aux.setAmountExpense("")
   };
   const handlerAddIncome = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     aux.setListIncome((prev) => [...prev, aux.income]);
+
   };
 
   return {
