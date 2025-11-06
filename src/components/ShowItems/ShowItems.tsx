@@ -1,8 +1,6 @@
-import { useBudgetContext } from "../context/quickBudgetContext";
-import { formatAmount } from "../utils/formatAmount";
-import "./showItems.css";
-
-
+import { useBudgetContext } from "../../context/quickBudgetContext";
+import { formatAmount } from "../../utils/formatAmount";
+import "./ShowItems.css";
 
 export const ShowItems = () => {
   const { listItem } = useBudgetContext();

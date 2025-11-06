@@ -1,6 +1,6 @@
-import { useInputHandler } from "../Hooks/useInputsHandlers";
-import { useBudgetContext } from "../context/quickBudgetContext";
-import "./forms.css";
+import { useInputHandler } from "../../../Hooks/useInputsHandlers";
+import { useBudgetContext } from "../../../context/quickBudgetContext";
+import "../forms.css";
 export const FormIncome = () => {
   const { handlerOnChangeIncome, handlerAddIncome } = useInputHandler();
   const { income } = useBudgetContext();

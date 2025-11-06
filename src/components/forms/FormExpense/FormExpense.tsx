@@ -1,7 +1,7 @@
-import { useBudgetContext } from "../context/quickBudgetContext";
-import { useInputHandler } from "../Hooks/useInputsHandlers";
-import "./forms.css";
-export const Form = () => {
+import { useBudgetContext } from "../../../context/quickBudgetContext";
+import { useInputHandler } from "../../../Hooks/useInputsHandlers";
+import "../forms.css";
+export const FormExpense = () => {
   const { amountExpense, concept } = useBudgetContext();
   const { handlerOnChangeConcept, handlerOnChangeAmountExpense, handlerAddExpense } =
     useInputHandler();
