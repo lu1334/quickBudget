@@ -24,6 +24,7 @@ export interface QuickBudgetContextType {
 
 export interface Item {
     id: number;
+    category:string
     concept: string;
     amountExpense: string;
     state?: boolean;
@@ -33,3 +34,5 @@ export type ItemIncome = {
     id:number,
     income:string
 }
+
+export type Retorno = Record<string,Item[]>
