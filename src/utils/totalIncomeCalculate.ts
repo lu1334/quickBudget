@@ -1,9 +1,13 @@
+
 import type{ Item } from "../types/types"
+import { totalExpenseCalculate } from "./totalExpenseCalculate"
 
 export const totalIncomeCalculate = (listItem:Item[],arrIncome:number[]) => {
-    
-      const totalExpense = listItem.reduce((acc,item )=> {
-        return acc + Number(item.amountExpense)
-      },0)
-      return (arrIncome.reduce((a,b) => a + b, 0) - totalExpense)
+      const totalExpense = totalExpenseCalculate(listItem)
+      const totalIncome = (arrIncome.reduce((a,b) => a + b, 0))
+      if(totalIncome < totalExpense ){
+        alert("the expenses exceed the income")
+        return
+      }
+      return totalIncome - totalExpense
 }
