@@ -1,14 +1,14 @@
 import { useBudgetContext } from "../../context/quickBudgetContext";
 import { formatAmount } from "../../utils/formatAmount";
-import { totalExpenseCalculate } from "../../utils/totalExpenseCalculate";
+import { totalIncomeCalculate } from "../../utils/totalIncomeCalculate";
 import { useNavigate } from "react-router-dom";
 import "./ShowItems.css";
 
 export const ShowItems = () => {
   const { listItem,listIncome,setTotalIncome ,totalIncome} = useBudgetContext();
-  setTotalIncome(totalExpenseCalculate(listItem,listIncome.toString().split(",").map(Number)));
+  setTotalIncome(totalIncomeCalculate(listItem,listIncome.toString().split(",").map(Number)));
   const hasItems = listItem.length > 0;
-  const naviga = useNavigate();
+  const navigate = useNavigate();
   return (
     <section className="qb-list-card">
       <div className="qb-list-heading">
@@ -36,7 +36,7 @@ export const ShowItems = () => {
         <span>Saldo total:</span>
         <span>${formatAmount(String(totalIncome))}</span>
       </div>
-      <button className="qb-secondary" onClick={() => naviga("/")}>
+      <button className="qb-secondary" onClick={() => navigate("/")}>
         Volver
       </button>
     </section>

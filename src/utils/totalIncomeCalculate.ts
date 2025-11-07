@@ -1,6 +1,6 @@
 import type{ Item } from "../types/types"
 
-export const totalExpenseCalculate = (listItem:Item[],arrIncome:number[]) => {
+export const totalIncomeCalculate = (listItem:Item[],arrIncome:number[]) => {
     
       const totalExpense = listItem.reduce((acc,item )=> {
         return acc + Number(item.amountExpense)
