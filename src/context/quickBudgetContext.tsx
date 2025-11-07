@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, use } from "react";
 import type { Item, QuickBudgetContextType } from "../types/types";
 export const QuickBudgetContext = createContext<
   QuickBudgetContextType | undefined
@@ -11,6 +11,7 @@ export const QuickBudgetProvider = ({
 }) => {
   const [income, setIncome] = useState<string>("");
   const [amountExpense, setAmountExpense] = useState<string>("");
+  const [category,setCategory]= useState<string>("")
   const [concept, setConcept] = useState<string>("");
   const [totalIncome, setTotalIncome] = useState<number>(0);
   const [totalExpenses, setTotalExpenses] = useState<number>(0);
@@ -27,6 +28,8 @@ export const QuickBudgetProvider = ({
         setIncome,
         amountExpense,
         setAmountExpense,
+        category,
+        setCategory,
         concept,
         setConcept,
         totalIncome,

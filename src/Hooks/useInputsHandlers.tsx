@@ -21,6 +21,9 @@ export const useInputHandler = () => {
   ) => {
     aux.setConcept(event.target.value);
   };
+  const handlerOnchangeCategoria =(event:React.ChangeEvent<HTMLSelectElement>)=>{
+    aux.setCategory(event.target.value)
+  }
 
   const handlerAddExpense = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,9 +31,8 @@ export const useInputHandler = () => {
     aux.setListItem((prev) => [
       ...prev,
       {
-        id: Date.now(),
-        concept: aux.concept,
-        amountExpense: aux.amountExpense,
+        ...aux ,
+        id: Date.now()  
       },
     ]);
     aux.setConcept("")
@@ -55,6 +57,7 @@ export const useInputHandler = () => {
   return {
     handlerAddExpense,
     handlerAddIncome,
+    handlerOnchangeCategoria,
     handlerOnChangeAmountExpense,
     handlerOnChangeConcept,
     handlerOnChangeIncome,

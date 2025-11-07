@@ -5,6 +5,8 @@ export interface QuickBudgetContextType {
     income: string;
     amountExpense: string;
     concept: string;
+    category:string;
+    setCategory:React.Dispatch<React.SetStateAction<string>>
     totalIncome: number;
     totalExpenses: number;
     listItem: Item[];
