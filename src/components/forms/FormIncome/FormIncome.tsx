@@ -1,7 +1,9 @@
 import { useInputHandler } from "../../../Hooks/useInputsHandlers";
 import { useBudgetContext } from "../../../context/quickBudgetContext";
+import { useNavigate } from "react-router-dom";
 import "../forms.css";
 export const FormIncome = () => {
+  const navigate = useNavigate();
   const { handlerOnChangeIncome, handlerAddIncome } = useInputHandler();
   const { income } = useBudgetContext();
   return (
@@ -26,6 +28,14 @@ export const FormIncome = () => {
       <button className="qb-submit" type="submit">
         Añadir ingreso
       </button>
+      <button
+        className="qb-secondary"
+        type="button"
+        onClick={() => navigate("/")}
+      >
+        Cancelar
+      </button>
     </form>
+    
   );
 };

@@ -1,7 +1,11 @@
 import { useBudgetContext } from "../../../context/quickBudgetContext";
 import { useInputHandler } from "../../../Hooks/useInputsHandlers";
+import { useNavigate } from "react-router-dom";
 import "../forms.css";
+
+
 export const FormExpense = () => {
+  const navigate = useNavigate();
   const { amountExpense, concept } = useBudgetContext();
   const { handlerOnChangeConcept, handlerOnChangeAmountExpense, handlerAddExpense } =
     useInputHandler();
@@ -39,6 +43,13 @@ export const FormExpense = () => {
       </div>
       <button className="qb-submit" type="submit">
         Añadir gasto
+      </button>
+      <button
+        className="qb-secondary"
+        type="button"
+        onClick={() => navigate("/")}
+      >
+        Cancelar
       </button>
     </form>
   );
