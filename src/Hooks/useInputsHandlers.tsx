@@ -27,7 +27,7 @@ export const useInputHandler = () => {
 
   const handlerAddExpense = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!validateRequiredFields(aux.concept, aux.amountExpense)) return;
+    if (!validateRequiredFields(aux.concept, aux.amountExpense,aux.category)) return;
     aux.setListItem((prev) => [
       ...prev,
       {
@@ -37,6 +37,7 @@ export const useInputHandler = () => {
     ]);
     aux.setConcept("")
     aux.setAmountExpense("")
+    aux.setCategory("")
   };
   const handlerAddIncome = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

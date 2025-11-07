@@ -10,6 +10,7 @@ export const FormExpense = () => {
     handlerOnChangeConcept,
     handlerOnChangeAmountExpense,
     handlerAddExpense,
+    handlerOnchangeCategoria
   } = useInputHandler();
   return (
     <form className="qb-form-card" onSubmit={handlerAddExpense}>
@@ -21,7 +22,7 @@ export const FormExpense = () => {
         <label className="qb-form-label" htmlFor="category">
           Choose Category:
         </label>
-        <select name="category" id="category">
+        <select name="category" id="category" onChange={handlerOnchangeCategoria}>
           <option value="">-</option>
           <option value="ocio">Ocio</option>
           <option value="deporte">Deporte</option> 
