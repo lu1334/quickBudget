@@ -1,6 +1,6 @@
-import { validateRequiredFields } from "../utils/validateRequiredFields";
+import { validateRequiredFields } from "../utils/validate/validateRequiredFields";
 import { useBudgetContext } from "../context/quickBudgetContext";
-import { validateRiqueridIncome } from "../utils/validateRequiredIncome";
+import { validateRiqueridIncome } from "../utils/validate/validateRequiredIncome";
 export const useInputHandler = () => {
   const aux = useBudgetContext();
 

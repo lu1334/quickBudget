@@ -1,7 +1,7 @@
 import { useBudgetContext } from "../../context/quickBudgetContext";
 import { formatAmount } from "../../utils/formatAmount";
-import { totalIncomeCalculate } from "../../utils/totalIncomeCalculate";
-import { totalExpenseCalculate } from "../../utils/totalExpenseCalculate";
+import { totalIncomeCalculate } from "../../utils/totalCalculate/totalIncomeCalculate";
+import { totalExpenseCalculate } from "../../utils/totalCalculate/totalExpenseCalculate";
 import { useNavigate } from "react-router-dom";
 import "./ShowItems.css";
 import { useEffect } from "react";
@@ -18,16 +18,18 @@ export const ShowItems = () => {
 
   useEffect(() => {
     if (!listIncome || listIncome.length === 0) return;
-    const income =totalIncomeCalculate(listItem, listIncome.toString().split(",").map(Number))   
-    const expense =totalExpenseCalculate(listItem);
-    if(income !== undefined)setTotalIncome(income)
-    setTotalExpenses(expense)
+    const income = totalIncomeCalculate(
+      listItem,
+      listIncome.toString().split(",").map(Number)
+    );
+    const expense = totalExpenseCalculate(listItem);
+    if (income !== undefined) setTotalIncome(income);
+    setTotalExpenses(expense);
   }, [listItem, listIncome, setTotalIncome, setTotalExpenses]);
-    
-  
+
   const hasItems = listItem.length > 0;
   const navigate = useNavigate();
-  
+
   return (
     <section className="qb-list-card">
       <div className="qb-list-heading">
@@ -53,7 +55,7 @@ export const ShowItems = () => {
       </ul>
       <div className="qb-list__total">
         <span>Total Gasto: ${formatAmount(String(totalExpenses))}</span>
-        <span>Saldo actual: ${formatAmount(String(totalIncome))}</span>   
+        <span>Saldo actual: ${formatAmount(String(totalIncome))}</span>
       </div>
       <button className="qb-secondary" onClick={() => navigate("/")}>
         Volver
@@ -61,4 +63,3 @@ export const ShowItems = () => {
     </section>
   );
 };
-
