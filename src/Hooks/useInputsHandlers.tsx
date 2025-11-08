@@ -33,17 +33,20 @@ export const useInputHandler = () => {
   const handlerAddExpense = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const arrIncome = Array.isArray(aux.listIncome)
-  ? aux.listIncome.map(Number).filter((n) => Number.isFinite(n))
-  : [];
+      ? aux.listIncome.map(Number).filter((n) => Number.isFinite(n) && n > 0)
+      : [];
     const income = totalIncomeCalculate(arrIncome);
-    const expense = totalExpenseCalculate(aux.listItem);
-    const result = validateExeedAmount(income, expense);
+    const currentExpenses = totalExpenseCalculate(aux.listItem);
+    const pendingAmount = Number(aux.amountExpense);
+    const nextExpenses = currentExpenses + (Number.isFinite(pendingAmount) ? pendingAmount : 0);
+    const result = validateExeedAmount(income, nextExpenses);
     if (!result) {
       alert("The expense exceeds the income");
       return;
     }
-    if (!validateRequiredFields(aux.concept, aux.amountExpense, aux.category))
+    if (!validateRequiredFields(aux.concept, aux.amountExpense, aux.category)) {
       return;
+    }
     aux.setListItem((prev) => [
       ...prev,
       {
@@ -56,7 +59,6 @@ export const useInputHandler = () => {
     aux.setConcept("");
     aux.setAmountExpense("");
     aux.setCategory("");
-    
   };
   const handlerAddIncome = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

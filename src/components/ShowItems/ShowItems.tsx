@@ -19,14 +19,19 @@ export const ShowItems = () => {
   } = useBudgetContext();
 
   useEffect(() => {
-    if (!listIncome || listIncome.length === 0) return;
+    const expense = totalExpenseCalculate(listItem);
+    setTotalExpenses(expense);
+
+    if (!listIncome || listIncome.length === 0) {
+      setTotalIncome(-expense);
+      return;
+    }
+
     const arrIncome = listIncome
       .map(Number)
       .filter((n) => Number.isFinite(n) && n > 0);
     const income = totalIncomeCalculate(arrIncome);
-    const expense = totalExpenseCalculate(listItem);
     setTotalIncome(income - expense);
-    setTotalExpenses(expense);
   }, [listItem, listIncome, setTotalIncome, setTotalExpenses]);
 
   const hasItems = listItem.length > 0;
