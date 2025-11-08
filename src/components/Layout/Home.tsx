@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Layout.css";
+import "./layout.css";
 
 export function Home() {
   return (
