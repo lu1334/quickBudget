@@ -3,6 +3,7 @@ import { formatAmount } from "../../utils/formatAmount";
 import { totalIncomeCalculate } from "../../utils/totalCalculate/totalIncomeCalculate";
 import { totalExpenseCalculate } from "../../utils/totalCalculate/totalExpenseCalculate";
 import { useNavigate } from "react-router-dom";
+import { BtnDelete } from "../buttons/btnDelete";
 import { useEffect } from "react";
 import type { Retorno } from "../../types/types";
 import { groupByCategory } from "../../utils/groupByCategory";
@@ -59,7 +60,9 @@ export const ShowItems = () => {
                     <span className="qb-list__concept">{item.concept}</span>
                     <span className="qb-list__amount">
                       ${formatAmount(item.amountExpense)}
+                      <BtnDelete id={item.id}/>
                     </span>
+
                   </li>
                 ))}
               </ul>
