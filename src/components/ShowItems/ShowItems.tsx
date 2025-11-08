@@ -17,7 +17,6 @@ export const ShowItems = () => {
     totalIncome,
     setTotalExpenses,
     totalExpenses,
-    income
   } = useBudgetContext();
 
   useEffect(() => {
