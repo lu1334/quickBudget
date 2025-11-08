@@ -132,10 +132,14 @@
 }
 
 .qb-list__total span:nth-child(1) {
-  color: #f87171;
+  color: #fbbf24;
 }
 
 .qb-list__total span:nth-child(2) {
+  color: #f87171;
+}
+
+.qb-list__total span:nth-child(3) {
   color: #4ade80;
 }
 

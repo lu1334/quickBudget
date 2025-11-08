@@ -17,6 +17,7 @@ export const ShowItems = () => {
     totalIncome,
     setTotalExpenses,
     totalExpenses,
+    income
   } = useBudgetContext();
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export const ShowItems = () => {
         )}
       </ul>
       <div className="qb-list__total">
+        <span>Initial balance: ${formatAmount(String(totalExpenses+totalIncome))}</span>
         <span>Total expense: ${formatAmount(String(totalExpenses))}</span>
         <span>Current balance: ${formatAmount(String(totalIncome))}</span>
       </div>
