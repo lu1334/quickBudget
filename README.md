@@ -1,67 +1,78 @@
-# Proyecto Vida
+# QuickBudget
 
-Comienzo oficial: [24-10-2025]
+QuickBudget es una aplicación React para registrar ingresos y gastos con una experiencia moderna. Está pensada para practicar hooks, contextos y validaciones en formularios, además de ofrecer una base para futuros módulos como persistencia y visualización de datos.
 
-🧾: QuickBudget – Plan de 4 semanas
+## Características
 
-📅 Semana 1: Estructura base + lógica de ingresos/gastos
+- **Gestión rápida de movimientos**: formularios separados para ingresos y gastos con validaciones personalizadas.
+- **Agrupación por categoría**: los gastos se organizan automáticamente en tarjetas por categoría para facilitar la lectura.
+- **Resumen en tiempo real**: cálculo del total de gastos e ingresos disponibles sin necesidad de recargar.
+- **Context API + hooks personalizados**: `QuickBudgetContext` centraliza el estado y `useInputHandler` ofrece handlers reutilizables.
+- **Estilos modernos**: componentes estilizados con CSS puro y gradientes inspirados en UI fintech.
 
-Objetivo: Tener una app funcional que permite añadir ingresos y gastos y los muestra en lista.
+## Tecnologías
 
-🔧 Tareas:
-	•	Crea el proyecto con Vite o Create React App.
-	•	Añade componentes: Formulario, Listado, Resumen.
-	•	Usa useState para manejar ingresos y gastos como arrays de objetos.
-	•	Permite agregar nuevos movimientos con un formulario.
-	•	Renderiza la lista y muestra el total (ingresos - gastos).
+- React 19 + React Router DOM 7
+- TypeScript
+- Vite
+- Context API y hooks personalizados
+- CSS Modules “handmade” (archivos `.css` por componente)
 
-📚 Aprenderás: Estados, props, formularios, manipulación de arrays, map, filter.
+## Requisitos
 
-⸻
+- Node.js **20.19+** (Vite 7 requiere esta versión o superior).
+- npm o yarn.
 
-📅 Semana 2: Persistencia + filtros + estilos base
+## Instalación
 
-Objetivo: Guardar datos en LocalStorage y poder filtrar por tipo (ingreso/gasto).
+```bash
+# Instalar dependencias
+npm install
 
-🔧 Tareas:
-	•	Usa useEffect para guardar y cargar datos desde LocalStorage.
-	•	Agrega opción de filtrar por tipo (ingreso/gasto).
-	•	Añade estilos simples con CSS o Tailwind (opcional).
-	•	Mejora el resumen financiero con ingresos totales, gastos totales y saldo.
+# Entorno de desarrollo
+npm run dev
 
-📚 Aprenderás: useEffect, lógica de filtrado, persistencia, estados derivados.
+# Linter
+npm run lint
 
-⸻
+# Build de producción
+npm run build
 
-📅 Semana 3: Autenticación + Firebase
+# Vista previa del build
+npm run preview
+```
 
-Objetivo: Añadir registro/login de usuario y guardar sus movimientos en la nube.
+## Estructura del proyecto
 
-🔧 Tareas:
-	•	Crea cuenta en Firebase y configura Firestore + Auth.
-	•	Permite registro/login con email y contraseña.
-	•	Cada usuario verá solo sus movimientos.
-	•	Reemplaza LocalStorage por Firestore (opcional).
+```
+src/
+├─ components/
+│  ├─ Layout/
+│  ├─ ShowItems/
+│  └─ forms/
+├─ context/
+├─ Hooks/
+├─ utils/
+│  ├─ totalCalculate/
+│  └─ validate/
+└─ types/
+```
 
-📚 Aprenderás: Firebase Auth, Firestore, manejo de sesiones, control de acceso.
+- `components/forms`: formularios de ingreso y gasto con estilos compartidos.
+- `components/ShowItems`: listado agrupado y resumen de totales.
+- `context/quickBudgetContext.tsx`: estado global para ingresos, gastos y totales.
+- `Hooks/useInputsHandlers.tsx`: lógica de validación y handlers para los formularios.
+- `utils/`: funciones de ayuda para validaciones y cálculos.
 
-⸻
+## Roadmap
 
-📅 Semana 4: Visualización + Deploy + Portafolio
+1. Persistir datos en LocalStorage o IndexedDB.
+2. Añadir filtros (por categoría, rango de fechas, tipo de movimiento).
+3. Conectar con un backend/Firebase para multiusuario.
+4. Incluir gráficos (Chart.js, Recharts) y widgets adicionales.
+5. Desplegar en Vercel/Netlify y documentar en portafolio.
 
-Objetivo: Agregar gráficos y publicar la app.
+## Licencia
 
-🔧 Tareas:
-	•	Añade gráficos de barras o pastel (con Chart.js o Recharts).
-	•	Mejora diseño (colores, layout, UX).
-	•	Sube el proyecto a GitHub.
-	•	Haz deploy en Vercel o Netlify.
-	•	Añade una sección en tu portafolio y documenta el proyecto.
-______________________________________________________________________________________________
-Fase 2:
-Objetivo del proyecto:
-Construir un producto digital basado en IA que me genere aprendizaje, habilidades reales y posibles ingresos futuros.
-
-Estado actual: Día 1 — Preparando el terreno.()
-
+Uso personal/educativo. 
 
