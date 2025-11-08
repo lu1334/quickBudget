@@ -20,12 +20,12 @@ export const ShowItems = () => {
 
   useEffect(() => {
     if (!listIncome || listIncome.length === 0) return;
-    const income = totalIncomeCalculate(
-      listItem,
-      listIncome.toString().split(",").map(Number)
-    );
+    const arrIncome = listIncome
+      .map(Number)
+      .filter((n) => Number.isFinite(n) && n > 0);
+    const income = totalIncomeCalculate(arrIncome);
     const expense = totalExpenseCalculate(listItem);
-    if (income !== undefined && income) setTotalIncome(income);
+    setTotalIncome(income - expense);
     setTotalExpenses(expense);
   }, [listItem, listIncome, setTotalIncome, setTotalExpenses]);
 

@@ -2,14 +2,15 @@ import { validateRequiredFields } from "../utils/validate/validateRequiredFields
 import { useBudgetContext } from "../context/quickBudgetContext";
 import { validateRiqueridIncome } from "../utils/validate/validateRequiredIncome";
 import { totalIncomeCalculate } from "../utils/totalCalculate/totalIncomeCalculate";
-
+import { totalExpenseCalculate } from "../utils/totalCalculate/totalExpenseCalculate";
+import { validateExeedAmount } from "../utils/validate/validateExceedAmount";
 export const useInputHandler = () => {
   const aux = useBudgetContext();
 
   const handlerOnChangeIncome = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    aux.setIncome(event.target.value );
+    aux.setIncome(event.target.value);
   };
 
   const handlerOnChangeAmountExpense = (
@@ -23,43 +24,53 @@ export const useInputHandler = () => {
   ) => {
     aux.setConcept(event.target.value);
   };
-  const handlerOnchangeCategoria =(event:React.ChangeEvent<HTMLSelectElement>)=>{
-    aux.setCategory(event.target.value)
-  }
+  const handlerOnchangeCategoria = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    aux.setCategory(event.target.value);
+  };
 
   const handlerAddExpense = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const income =aux.listIncome.toString().split(",").map(Number)
-    if (!validateRequiredFields(aux.concept, aux.amountExpense,aux.category)) return;
-    if  (!totalIncomeCalculate(aux.listItem,income)){
-      alert("the expenses exceed the income")
-      return
+    const arrIncome = Array.isArray(aux.listIncome)
+  ? aux.listIncome.map(Number).filter((n) => Number.isFinite(n))
+  : [];
+    const income = totalIncomeCalculate(arrIncome);
+    const expense = totalExpenseCalculate(aux.listItem);
+    const result = validateExeedAmount(income, expense);
+    if (!result) {
+      alert("The expense exceeds the income");
+      return;
     }
+    if (!validateRequiredFields(aux.concept, aux.amountExpense, aux.category))
+      return;
     aux.setListItem((prev) => [
       ...prev,
       {
-        ...aux ,
-        id: Date.now()  
+        id: Date.now(),
+        category: aux.category,
+        concept: aux.concept,
+        amountExpense: aux.amountExpense,
       },
     ]);
-    aux.setConcept("")
-    aux.setAmountExpense("")
-    aux.setCategory("")
+    aux.setConcept("");
+    aux.setAmountExpense("");
+    aux.setCategory("");
+    
   };
   const handlerAddIncome = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-   if(!validateRiqueridIncome(aux.income)){
-    alert("the field must be a number")
-    return
-   }else if(aux.income.trim()===""){
-    alert("the field is required")
-    return
-   }
-   else{
-    alert("Income added successfully")
+    if (aux.income.trim() === "") {
+      alert("the field is required");
+      return;
+    } else if (!validateRiqueridIncome(aux.income)) {
+      alert("the field must be a number");
+      return;
+    } else {
+      alert("Income added successfully");
     }
     aux.setListIncome((prev) => [...prev, aux.income]);
-    aux.setIncome("")
+    aux.setIncome("");
   };
 
   return {

@@ -1,7 +1,8 @@
 
 
 export const validateRequiredFields = (concept:string,amount:string,category:string)=>{
-    if(concept.trim() === '' || Number(amount) <=0 || !concept || !amount || !category){
+    const isValidAmount = /^\d+(\.\d{1,2})?$/.test(amount);
+    if(concept.trim() === '' || !isValidAmount || !category){
        alert('Please fill in all required fields with valid values.');
        return false;
     }

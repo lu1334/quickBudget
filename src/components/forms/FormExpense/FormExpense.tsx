@@ -5,7 +5,7 @@ import "../forms.css";
 
 export const FormExpense = () => {
   const navigate = useNavigate();
-  const { amountExpense, concept } = useBudgetContext();
+  const { amountExpense, concept ,category} = useBudgetContext();
   const {
     handlerOnChangeConcept,
     handlerOnChangeAmountExpense,
@@ -22,7 +22,7 @@ export const FormExpense = () => {
         <label className="qb-form-label" htmlFor="category">
           Choose Category:
         </label>
-        <select name="category" id="category" onChange={handlerOnchangeCategoria}>
+        <select name="category" id="category" value={category} onChange={handlerOnchangeCategoria}>
           <option value="">-</option>
           <option value="ocio">Ocio</option>
           <option value="deporte">Deporte</option> 
