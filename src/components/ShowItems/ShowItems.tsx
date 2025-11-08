@@ -25,7 +25,7 @@ export const ShowItems = () => {
       listIncome.toString().split(",").map(Number)
     );
     const expense = totalExpenseCalculate(listItem);
-    if (income !== undefined) setTotalIncome(income);
+    if (income !== undefined && income) setTotalIncome(income);
     setTotalExpenses(expense);
   }, [listItem, listIncome, setTotalIncome, setTotalExpenses]);
 

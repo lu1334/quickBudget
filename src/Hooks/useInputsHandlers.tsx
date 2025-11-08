@@ -1,6 +1,8 @@
 import { validateRequiredFields } from "../utils/validate/validateRequiredFields";
 import { useBudgetContext } from "../context/quickBudgetContext";
 import { validateRiqueridIncome } from "../utils/validate/validateRequiredIncome";
+import { totalIncomeCalculate } from "../utils/totalCalculate/totalIncomeCalculate";
+
 export const useInputHandler = () => {
   const aux = useBudgetContext();
 
@@ -27,7 +29,12 @@ export const useInputHandler = () => {
 
   const handlerAddExpense = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const income =aux.listIncome.toString().split(",").map(Number)
     if (!validateRequiredFields(aux.concept, aux.amountExpense,aux.category)) return;
+    if  (!totalIncomeCalculate(aux.listItem,income)){
+      alert("the expenses exceed the income")
+      return
+    }
     aux.setListItem((prev) => [
       ...prev,
       {
