@@ -4,6 +4,8 @@ import { validateRiqueridIncome } from "../utils/validate/validateRequiredIncome
 import { totalIncomeCalculate } from "../utils/totalCalculate/totalIncomeCalculate";
 import { totalExpenseCalculate } from "../utils/totalCalculate/totalExpenseCalculate";
 import { validateExeedAmount } from "../utils/validate/validateExceedAmount";
+import { useEffect } from "react";
+
 export const useInputHandler = () => {
   const aux = useBudgetContext();
 
@@ -38,7 +40,8 @@ export const useInputHandler = () => {
     const income = totalIncomeCalculate(arrIncome);
     const currentExpenses = totalExpenseCalculate(aux.listItem);
     const pendingAmount = Number(aux.amountExpense);
-    const nextExpenses = currentExpenses + (Number.isFinite(pendingAmount) ? pendingAmount : 0);
+    const nextExpenses =
+      currentExpenses + (Number.isFinite(pendingAmount) ? pendingAmount : 0);
     const result = validateExeedAmount(income, nextExpenses);
     if (!result) {
       alert("The expense exceeds the income");
@@ -47,6 +50,7 @@ export const useInputHandler = () => {
     if (!validateRequiredFields(aux.concept, aux.amountExpense, aux.category)) {
       return;
     }
+
     aux.setListItem((prev) => [
       ...prev,
       {
@@ -56,6 +60,7 @@ export const useInputHandler = () => {
         amountExpense: aux.amountExpense,
       },
     ]);
+
     aux.setConcept("");
     aux.setAmountExpense("");
     aux.setCategory("");
@@ -74,6 +79,15 @@ export const useInputHandler = () => {
     aux.setListIncome((prev) => [...prev, aux.income]);
     aux.setIncome("");
   };
+
+  useEffect(() => {
+    const allFilled =
+      aux.concept.trim() !== "" &&
+      aux.amountExpense.trim() !== "" &&
+      aux.category.trim() !== "";
+
+    aux.setShowButton(allFilled);
+  }, [aux.concept, aux.amountExpense, aux.category]);
 
   return {
     handlerAddExpense,

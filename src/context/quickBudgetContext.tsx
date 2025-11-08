@@ -10,6 +10,7 @@ export const QuickBudgetProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [showButton, setShowButton] = useState<boolean>(false);
   const [income, setIncome] = useState<string>("");
   const [amountExpense, setAmountExpense] = useState<string>("");
   const [category, setCategory] = useState<string>("");
@@ -25,6 +26,8 @@ export const QuickBudgetProvider = ({
   return (
     <QuickBudgetContext.Provider
       value={{
+        showButton,
+        setShowButton,
         income,
         setIncome,
         amountExpense,

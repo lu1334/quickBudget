@@ -5,12 +5,12 @@ import "../forms.css";
 
 export const FormExpense = () => {
   const navigate = useNavigate();
-  const { amountExpense, concept ,category} = useBudgetContext();
+  const { amountExpense, concept, category, showButton } = useBudgetContext();
   const {
     handlerOnChangeConcept,
     handlerOnChangeAmountExpense,
     handlerAddExpense,
-    handlerOnchangeCategoria
+    handlerOnchangeCategoria,
   } = useInputHandler();
   return (
     <form className="qb-form-card" onSubmit={handlerAddExpense}>
@@ -22,7 +22,12 @@ export const FormExpense = () => {
         <label className="qb-form-label" htmlFor="category">
           Choose Category:
         </label>
-        <select name="category" id="category" value={category} onChange={handlerOnchangeCategoria}>
+        <select
+          name="category"
+          id="category"
+          value={category}
+          onChange={handlerOnchangeCategoria}
+        >
           <option value="">-</option>
           <option value="ocio">Ocio</option>
           <option value="deporte">Deporte</option> 
@@ -56,9 +61,12 @@ export const FormExpense = () => {
           onChange={handlerOnChangeAmountExpense}
         />
       </div>
-      <button className="qb-submit" type="submit">
-        Añadir gasto
-      </button>
+      {showButton && (
+        <button className="qb-submit" type="submit">
+          Añadir gasto
+        </button>
+      )}
+
       <button
         className="qb-secondary"
         type="button"

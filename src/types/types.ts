@@ -12,7 +12,8 @@ export interface QuickBudgetContextType {
     listItem: Item[];
     listIncome:string[];
     setListItem: React.Dispatch<React.SetStateAction<Item[]>>;
-
+    showButton:boolean
+    setShowButton:React.Dispatch<React.SetStateAction<boolean>>;
     setIncome: React.Dispatch<React.SetStateAction<string>>;
     setListIncome:React.Dispatch<React.SetStateAction<string[]>>
     setAmountExpense: React.Dispatch<React.SetStateAction<string>>;
