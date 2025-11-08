@@ -1,11 +1,21 @@
 import { useBudgetContext } from "../../context/quickBudgetContext";
+import "./btnDelete.css";
 
-export const BtnDelete = ({id}:{id:number})=>{
-    const {handlerDeleteItem} = useBudgetContext()
+type BtnDeleteProps = {
+  id: number;
+};
 
-    return(
-        <>
-         <button onClick={()=>handlerDeleteItem(id)}>Delete</button>
-        </>
-    )
-}
+export const BtnDelete = ({ id }: BtnDeleteProps) => {
+  const { handlerDeleteItem } = useBudgetContext();
+
+  return (
+    <button
+      type="button"
+      className="qb-delete-btn"
+      onClick={() => handlerDeleteItem(id)}
+      aria-label="Delete transaction"
+    >
+      Delete
+    </button>
+  );
+};

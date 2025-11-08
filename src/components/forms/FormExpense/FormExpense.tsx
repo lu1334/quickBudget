@@ -15,8 +15,8 @@ export const FormExpense = () => {
   return (
     <form className="qb-form-card" onSubmit={handlerAddExpense}>
       <div className="qb-form-heading">
-        <h2>Registra un nuevo gasto</h2>
-        <p>Anota cada salida para mantener tu presupuesto bajo control.</p>
+        <h2>Register a new expense</h2>
+        <p>Track each outflow to keep your budget under control.</p>
       </div>
       <div className="qb-form-group">
         <label className="qb-form-label" htmlFor="category">
@@ -29,41 +29,41 @@ export const FormExpense = () => {
           onChange={handlerOnchangeCategoria}
         >
           <option value="">-</option>
-          <option value="ocio">Ocio</option>
-          <option value="deporte">Deporte</option> 
-          <option value="salud">Salud</option>
-          <option value="alimentos">Alimentos</option>
+          <option value="leisure">Leisure</option>
+          <option value="fitness">Fitness</option>
+          <option value="health">Health</option>
+          <option value="groceries">Groceries</option>
         </select>
       </div>
       <div className="qb-form-group">
         <label className="qb-form-label" htmlFor="concept">
-          Concepto
+          Concept
         </label>
         <input
           type="text"
           id="concept"
           className="qb-input"
           value={concept}
-          placeholder="Ej. Compra supermercado"
+          placeholder="e.g. Grocery run"
           onChange={handlerOnChangeConcept}
         />
       </div>
       <div className="qb-form-group">
         <label className="qb-form-label" htmlFor="amountExpense">
-          Importe
+          Amount
         </label>
         <input
           type="text"
           id="amountExpense"
           className="qb-input"
           value={amountExpense}
-          placeholder="Ej. 75.50"
+          placeholder="e.g. 75.50"
           onChange={handlerOnChangeAmountExpense}
         />
       </div>
       {showButton && (
         <button className="qb-submit" type="submit">
-          Añadir gasto
+          Add expense
         </button>
       )}
 
@@ -72,7 +72,7 @@ export const FormExpense = () => {
         type="button"
         onClick={() => navigate("/")}
       >
-        Cancelar
+        Cancel
       </button>
     </form>
   );

@@ -9,31 +9,31 @@ export const FormIncome = () => {
   return (
     <form className="qb-form-card" onSubmit={handlerAddIncome}>
       <div className="qb-form-heading">
-        <h2>Registra un ingreso</h2>
-        <p>Actualiza tu presupuesto sumando cada nuevo ingreso fácilmente.</p>
+        <h2>Register an income</h2>
+        <p>Keep your budget up to date by logging every new inflow.</p>
       </div>
       <div className="qb-form-group">
         <label className="qb-form-label" htmlFor="income">
-          Importe
+          Amount
         </label>
         <input
           type="text"
           id="income"
           className="qb-input"
           value={income}
-          placeholder="Ej. 1200.00"
+          placeholder="e.g. 1200.00"
           onChange={handlerOnChangeIncome}
         />
       </div>
       <button className="qb-submit" type="submit">
-        Añadir ingreso
+        Add income
       </button>
       <button
         className="qb-secondary"
         type="button"
         onClick={() => navigate("/")}
       >
-        Cancelar
+        Cancel
       </button>
     </form>
     

@@ -12,17 +12,17 @@ export const Layout = () => {
           <ul className="qb-menu__list">
             <li>
               <Link className="qb-menu__link" to="/form-income">
-                Añadir ingreso
+                Add income
               </Link>
             </li>
             <li>
               <Link className="qb-menu__link" to="/form-expense">
-                Añadir gasto
+                Add expense
               </Link>
             </li>
             <li>
               <Link className="qb-menu__link" to="/show-items">
-                Ver movimientos
+                View transactions
               </Link>
             </li>
           </ul>

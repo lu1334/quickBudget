@@ -6,32 +6,32 @@ export function Home() {
     <section className="home-hero">
       <span className="home-hero__badge">QuickBudget</span>
       <h1 className="home-hero__title">
-        Domina tu <span>presupuesto</span> sin perder estilo.
+        Master your <span>budget</span> without losing style.
       </h1>
       <p className="home-hero__subtitle">
-        Registra ingresos, controla gastos y obtén una visión clara de tus
-        movimientos diarios con un panel tan elegante como efectivo.
+        Log incomes, control expenses, and get a clear view of your daily
+        activity with a panel that is as elegant as it is effective.
       </p>
       <div className="home-hero__cta-group">
         <Link className="home-cta home-cta--primary" to="/form-income">
-          Añadir ingreso
+          Add income
         </Link>
         <Link className="home-cta home-cta--ghost" to="/form-expense">
-          Añadir gasto
+          Add expense
         </Link>
       </div>
       <div className="home-hero__insights">
         <div className="home-hero__insight">
           <span className="home-hero__metric">360º</span>
-          <span className="home-hero__label">Resumen diario</span>
+          <span className="home-hero__label">Daily snapshot</span>
         </div>
         <div className="home-hero__insight">
           <span className="home-hero__metric">+15%</span>
-          <span className="home-hero__label">Ahorro proyectado</span>
+          <span className="home-hero__label">Projected savings</span>
         </div>
         <div className="home-hero__insight">
           <span className="home-hero__metric">5 min</span>
-          <span className="home-hero__label">Tiempo de registro</span>
+          <span className="home-hero__label">Average log time</span>
         </div>
       </div>
     </section>

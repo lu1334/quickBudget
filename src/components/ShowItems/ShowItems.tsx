@@ -41,14 +41,14 @@ export const ShowItems = () => {
   return (
     <section className="qb-list-card">
       <div className="qb-list-heading">
-        <h2>Movimientos registrados</h2>
-        <p>Revisa tus ingresos y gastos recientes en un solo lugar.</p>
+        <h2>Recorded transactions</h2>
+        <p>Review your latest incomes and expenses in a single view.</p>
       </div>
       <ul className="qb-list">
         {!hasItems ? (
           <li className="qb-list__empty">
-            Aún no registras movimientos. Añade un ingreso o gasto para
-            comenzar.
+            You have no transactions yet. Add an income or expense to get
+            started.
           </li>
         ) : (
           Object.entries(grouped).map(([catg, items]) => (
@@ -58,11 +58,12 @@ export const ShowItems = () => {
                 {items.map((item) => (
                   <li className="qb-list__item" key={item.id}>
                     <span className="qb-list__concept">{item.concept}</span>
-                    <span className="qb-list__amount">
-                      ${formatAmount(item.amountExpense)}
-                      <BtnDelete id={item.id}/>
-                    </span>
-
+                    <div className="qb-list__actions">
+                      <span className="qb-list__amount">
+                        ${formatAmount(item.amountExpense)}
+                      </span>
+                      <BtnDelete id={item.id} />
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -71,11 +72,11 @@ export const ShowItems = () => {
         )}
       </ul>
       <div className="qb-list__total">
-        <span>Total Gasto: ${formatAmount(String(totalExpenses))}</span>
-        <span>Saldo actual: ${formatAmount(String(totalIncome))}</span>
+        <span>Total expense: ${formatAmount(String(totalExpenses))}</span>
+        <span>Current balance: ${formatAmount(String(totalIncome))}</span>
       </div>
       <button className="qb-secondary" onClick={() => navigate("/")}>
-        Volver
+        Go back
       </button>
     </section>
   );
